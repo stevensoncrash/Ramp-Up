@@ -9,7 +9,7 @@
 /* Begin PBXBuildFile section */
 		4A2F148C2194DAFF0036C590 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A2F148B2194DAFF0036C590 /* AppDelegate.swift */; };
 		4A2F148E2194DAFF0036C590 /* art.scnassets in Resources */ = {isa = PBXBuildFile; fileRef = 4A2F148D2194DAFF0036C590 /* art.scnassets */; };
-		4A2F14902194DAFF0036C590 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A2F148F2194DAFF0036C590 /* ViewController.swift */; };
+		4A2F14902194DAFF0036C590 /* RampPlacerVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A2F148F2194DAFF0036C590 /* RampPlacerVC.swift */; };
 		4A2F14932194DAFF0036C590 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 4A2F14912194DAFF0036C590 /* Main.storyboard */; };
 		4A2F14952194DAFF0036C590 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 4A2F14942194DAFF0036C590 /* Assets.xcassets */; };
 		4A2F14982194DAFF0036C590 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 4A2F14962194DAFF0036C590 /* LaunchScreen.storyboard */; };
@@ -19,7 +19,7 @@
 		4A2F14882194DAFF0036C590 /* Ramp-Up.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Ramp-Up.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		4A2F148B2194DAFF0036C590 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		4A2F148D2194DAFF0036C590 /* art.scnassets */ = {isa = PBXFileReference; lastKnownFileType = wrapper.scnassets; path = art.scnassets; sourceTree = "<group>"; };
-		4A2F148F2194DAFF0036C590 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
+		4A2F148F2194DAFF0036C590 /* RampPlacerVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RampPlacerVC.swift; sourceTree = "<group>"; };
 		4A2F14922194DAFF0036C590 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		4A2F14942194DAFF0036C590 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		4A2F14972194DAFF0036C590 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
@@ -56,15 +56,23 @@
 		4A2F148A2194DAFF0036C590 /* Ramp-Up */ = {
 			isa = PBXGroup;
 			children = (
+				4AFA35092194DF6F008C0E6E /* Controller */,
 				4A2F148B2194DAFF0036C590 /* AppDelegate.swift */,
 				4A2F148D2194DAFF0036C590 /* art.scnassets */,
-				4A2F148F2194DAFF0036C590 /* ViewController.swift */,
 				4A2F14912194DAFF0036C590 /* Main.storyboard */,
 				4A2F14942194DAFF0036C590 /* Assets.xcassets */,
 				4A2F14962194DAFF0036C590 /* LaunchScreen.storyboard */,
 				4A2F14992194DAFF0036C590 /* Info.plist */,
 			);
 			path = "Ramp-Up";
+			sourceTree = "<group>";
+		};
+		4AFA35092194DF6F008C0E6E /* Controller */ = {
+			isa = PBXGroup;
+			children = (
+				4A2F148F2194DAFF0036C590 /* RampPlacerVC.swift */,
+			);
+			path = Controller;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -139,7 +147,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				4A2F14902194DAFF0036C590 /* ViewController.swift in Sources */,
+				4A2F14902194DAFF0036C590 /* RampPlacerVC.swift in Sources */,
 				4A2F148C2194DAFF0036C590 /* AppDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -289,6 +297,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 979WE2JCPD;
 				INFOPLIST_FILE = "Ramp-Up/Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 12.1;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -307,6 +316,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 979WE2JCPD;
 				INFOPLIST_FILE = "Ramp-Up/Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 12.1;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
