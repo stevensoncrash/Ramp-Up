@@ -13,6 +13,7 @@ import ARKit
 class RampPlacerVC: UIViewController, ARSCNViewDelegate, UIPopoverPresentationControllerDelegate {
 
     @IBOutlet var sceneView: ARSCNView!
+    var selectedRamp: String?
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -24,7 +25,8 @@ class RampPlacerVC: UIViewController, ARSCNViewDelegate, UIPopoverPresentationCo
         sceneView.showsStatistics = true
         
         // Create a new scene
-        let scene = SCNScene(named: "art.scnassets/pipe.dae")!
+        let scene = SCNScene(named: "art.scnassets/main.scn")!
+        sceneView.autoenablesDefaultLighting = true 
         
         // Set the scene to the view
         sceneView.scene = scene
@@ -46,17 +48,6 @@ class RampPlacerVC: UIViewController, ARSCNViewDelegate, UIPopoverPresentationCo
         // Pause the view's session
         sceneView.session.pause()
     }
-
-    // MARK: - ARSCNViewDelegate
-    
-/*
-    // Override to create and configure nodes for anchors added to the view's session.
-    func renderer(_ renderer: SCNSceneRenderer, nodeFor anchor: ARAnchor) -> SCNNode? {
-        let node = SCNNode()
-     
-        return node
-    }
-*/
     
     func session(_ session: ARSession, didFailWithError error: Error) {
         // Present an error message to the user
@@ -77,6 +68,15 @@ class RampPlacerVC: UIViewController, ARSCNViewDelegate, UIPopoverPresentationCo
         return .none
     }
     
+    override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
+        guard let touch = touches.first else {return}
+        
+        let results = sceneView.hitTest(touch.location(in: sceneView), types: [.featurePoint])
+        guard let hitFeature = results.last else {return}
+        let hitTransform = SCNMatrix4(hitFeature.worldTransform)
+        let hitPosition = SCNVector3(hitTransform.m41, hitTransform.m42, hitTransform.m43)
+    }
+    
     @IBAction func onRampBtnPressed(_ sender: UIButton) {
         let rampPickerVC = RampPickerVC(size: CGSize(width: 250.00, height: 500.00))
         rampPickerVC.rampPlacerVC = self
@@ -88,6 +88,14 @@ class RampPlacerVC: UIViewController, ARSCNViewDelegate, UIPopoverPresentationCo
     }
     
     func onRampSelected(_ rampName: String){
-        
+        selectedRamp = rampName
+    }
+    func placeRamp(position: SCNVector3){
+        if let rampName = selectedRamp{
+            let ramp = Ramp.getRampForName(rampName: rampName)
+            ramp.position = position
+            ramp.scale = SCNVector3Make(0.01, 0.01, 0.01)
+            sceneView.scene.rootNode.addChildNode(ramp)
+        }
     }
 }
