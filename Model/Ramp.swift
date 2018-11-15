@@ -23,12 +23,11 @@ class Ramp {
         default:
             return Ramp.getPipe()
         }
-        
     }
     
     class func getPipe() -> SCNNode {
-        var obj = SCNScene(named: "art.scnassets/pipe.dae")
-        var node = obj?.rootNode.childNode(withName: "pipe", recursively: true)!
+        let obj = SCNScene(named: "art.scnassets/pipe.dae")
+        let node = obj?.rootNode.childNode(withName: "pipe", recursively: true)!
         node?.scale = SCNVector3Make(0.0018, 0.0018,0.0018)
         node?.position = SCNVector3Make(0.010, 0.5, -1)
         return node!
